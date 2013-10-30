@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
 int main() {
   for (int i = 1; i < 101; i++) {
