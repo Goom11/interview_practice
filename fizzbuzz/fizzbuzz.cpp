@@ -15,7 +15,7 @@ int main() {
     if (s.length() == 0) {
       cout << i << endl;
     } else {
-        cout << s << endl;
+      cout << s << endl;
     }
   }
 }
