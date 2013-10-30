@@ -12,6 +12,10 @@ int main() {
     if (i % 5 == 0) {
       s += "Buzz";
     }
-    s.length() == 0 ? cout << i << endl : cout << s << endl;
+    if (s.length() == 0) {
+      cout << i << endl;
+    } else {
+        cout << s << endl;
+    }
   }
 }
