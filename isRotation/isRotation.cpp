@@ -11,9 +11,7 @@ bool isRotation(string str1, string str2) {
   if (len == str2.length() && len > 0) {
     string str1str1 = str1 + str1;
     size_t found = str1str1.find(str2);
-    if (found == -1) {
-      return false;
-    } else {
+    if (found != -1) {
       return true;
     }
   }
