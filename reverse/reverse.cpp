@@ -2,7 +2,6 @@
 
 using std::cout;
 using std::endl;
-using std::string;
 
 void swap(char* a, char* b) {
   char tmp = *a;
