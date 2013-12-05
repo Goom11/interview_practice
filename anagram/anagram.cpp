@@ -12,8 +12,6 @@ bool anagram(string str1, string str2) {
   int char_set[256] = {0};
   for (int i = 0; i < str1.length(); i++) {
     char_set[str1[i]]++;
-  }
-  for (int i = 0; i < str2.length(); i++) {
     char_set[str2[i]]--;
   }
   for (int i = 0; i < 256; i++) {
