@@ -37,7 +37,7 @@ def test1():
         "15 three",
         "25 four",
     ]
-    songs = [make_song_from_string(string_input[i], i + 1) for i in xrange(n)]
+    songs = [make_song_from_string(string_i, i + 1) for i, string_i in enumerate(string_input)]
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["four", "two"]:
@@ -65,7 +65,7 @@ def test2():
         "11272 slow_country",
         "10521 m1_a1",
     ]
-    songs = [make_song_from_string(string_input[i], i + 1) for i in xrange(n)]
+    songs = [make_song_from_string(string_i, i + 1) for i, string_i in enumerate(string_input)]
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["19_2000", "clint_eastwood", "tomorrow_comes_today"]:
