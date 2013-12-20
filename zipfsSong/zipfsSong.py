@@ -7,9 +7,10 @@ def make_song_from_string(string_input, number):
        '#{num_plays} #{name}'
     """
     plays, name = string_input.split()
+    plays = int(plays)
     return {
         'number': number,
-        'plays': int(plays),
+        'plays': plays,
         'name': name,
         'quality': plays * number,
     }
@@ -26,7 +27,7 @@ def run():
     n, m = map(int, raw_input().split())
     songs = [make_song_from_string(raw_input(), i + 1) for i in xrange(n)]
     top_m = get_top_m(songs, m)
-    print '\n'.join([entry[2] for entry in top_m])
+    print '\n'.join((entry[2] for entry in top_m))
 
 def test1():
     n = 4
@@ -41,9 +42,9 @@ def test1():
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["four", "two"]:
-        print "test1 failed"
-    else:
         print "test1 passed"
+    else:
+        print "test1 failed"
 
 def test2():
     n = 15
@@ -69,9 +70,9 @@ def test2():
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["19_2000", "clint_eastwood", "tomorrow_comes_today"]:
-        print "test2 failed"
+        print "test1 passed"
     else:
-        print "test2 passed"
+        print "test1 failed"
 
 if __name__ == "__main__":
      # test1()
