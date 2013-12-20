@@ -2,21 +2,17 @@
 
 from heapq import nlargest
 
-def make_song(number, plays, name):
-    return {
-        'number': number,
-        'plays': plays,
-        'name': name,
-        'quality': plays * number,
-    }
-
 def make_song_from_string(string_input, number):
     """Constructs song dict given song number and a string in the format:
        '#{num_plays} #{name}'
     """
-    frequency, name = string_input.split()
-    frequency = int(frequency)
-    return make_song(number, frequency, name)
+    plays, name = string_input.split()
+    return {
+        'number': number,
+        'plays': int(plays),
+        'name': name,
+        'quality': plays * number,
+    }
 
 def get_top_m(songs, m):
     """Returns an array of top m songs based on quality"""
