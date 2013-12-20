@@ -14,7 +14,9 @@ class Song(object):
     @classmethod
     def from_input(cls, input, number):
         """Constructs Song object given song number and an input in the format: '#{num_plays} #{name}'"""
-        cls(number, frequency, name)
+        frequency, name = input.split()
+        frequency = float(frequency)
+        return cls(number, frequency, name)
 
     def get_quality(self, first_frequency):
         """Gets quality based on qi = fi/zi where zi is proportional to 1/i"""
@@ -27,23 +29,19 @@ def get_top_m(songs, m):
     first_frequency = songs[0].frequency
     # Each entry is a 3-element list containing the priority, an entry count reversed, and the song
     pq = [[song.get_quality(first_frequency), num_songs - song.number, song] for song in songs]
+    # The total array is treated as a priority queue implemented using python's heapq
     return nlargest(m, pq)
 
-def get_songs():
-    n, m = map(int, raw_input().split())
-    songs = [Circle.from_input(raw_input(), i) for i in xrange(n)]
-    return None
-
 def run():
-    songs = get_songs()
-    top_m = album.get_top_m()
-    print [i[2].name for i in top_m]
+    n, m = map(int, raw_input().split())
+    songs = [Song.from_input(raw_input(), i + 1) for i in xrange(n)]
+    top_m = get_top_m(songs, m)
+    print '\n'.join([entry[2].name for entry in top_m])
 
-s1 = Song(1, 100, "a")
-s2 = Song(2, 50, "b")
-s3 = Song(3, 100, "c")
-songs = [s1, s2, s3]
-t = get_top_m(songs, 3)
-print t
-print [i[2].name for i in t]
-get_songs()
+run()
+
+# s1 = Song(1, 100, "a")
+# s2 = Song(2, 50, "b")
+# s3 = Song(3, 100, "c")
+# songs = [s1, s2, s3]
+# t = get_top_m(songs, 3)
