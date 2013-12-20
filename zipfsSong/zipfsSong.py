@@ -27,7 +27,7 @@ def run():
     n, m = map(int, raw_input().split())
     songs = [make_song_from_string(raw_input(), i + 1) for i in xrange(n)]
     top_m = get_top_m(songs, m)
-    print '\n'.join((entry[2] for entry in top_m))
+    print '\n'.join(entry[2] for entry in top_m)
 
 def test1():
     n = 4
