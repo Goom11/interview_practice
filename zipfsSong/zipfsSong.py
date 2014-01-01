@@ -2,6 +2,7 @@
 
 from heapq import nlargest
 
+
 def make_song_from_string(string_input, number):
     """Constructs song dict given song number and a string in the format:
        '#{num_plays} #{name}'
@@ -15,19 +16,23 @@ def make_song_from_string(string_input, number):
         'quality': plays * number,
     }
 
+
 def get_top_m(songs, m):
     """Returns an array of top m songs based on quality"""
     num_songs = len(songs)
-    # Each entry is a 3-element list containing the priority (quality), an entry count reversed, and the song name
+    # Each entry is a 3-element list containing:
+    # [the priority (quality), an entry count reversed, and the song name]
     pq = [[song['quality'], -song['number'], song['name']] for song in songs]
-    # The total array is treated as a priority queue implemented using python's heapq
+    # The total array is treated as a priority queue using python's heapq
     return nlargest(m, pq)
+
 
 def run():
     n, m = map(int, raw_input().split())
     songs = [make_song_from_string(raw_input(), i + 1) for i in xrange(n)]
     top_m = get_top_m(songs, m)
     print '\n'.join(entry[2] for entry in top_m)
+
 
 def test1():
     n = 4
@@ -38,13 +43,15 @@ def test1():
         "15 three",
         "25 four",
     ]
-    songs = [make_song_from_string(string_i, i + 1) for i, string_i in enumerate(string_input)]
+    songs = [make_song_from_string(string_i, i + 1)
+             for i, string_i in enumerate(string_input)]
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["four", "two"]:
         print "test1 passed"
     else:
         print "test1 failed"
+
 
 def test2():
     n = 15
@@ -66,7 +73,8 @@ def test2():
         "11272 slow_country",
         "10521 m1_a1",
     ]
-    songs = [make_song_from_string(string_i, i + 1) for i, string_i in enumerate(string_input)]
+    songs = [make_song_from_string(string_i, i + 1)
+             for i, string_i in enumerate(string_input)]
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["19_2000", "clint_eastwood", "tomorrow_comes_today"]:
@@ -74,7 +82,8 @@ def test2():
     else:
         print "test1 failed"
 
+
 if __name__ == "__main__":
-     # test1()
-     # test2()
-     run()
+    test1()
+    test2()
+    run()
