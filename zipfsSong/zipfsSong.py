@@ -19,7 +19,6 @@ def make_song_from_string(string_input, number):
 
 def get_top_m(songs, m):
     """Returns an array of top m songs based on quality"""
-    num_songs = len(songs)
     # Each entry is a 3-element list containing:
     # [the priority (quality), an entry count reversed, and the song name]
     pq = [[song['quality'], -song['number'], song['name']] for song in songs]
@@ -78,12 +77,12 @@ def test2():
     top_m = get_top_m(songs, m)
     results = [entry[2] for entry in top_m]
     if results == ["19_2000", "clint_eastwood", "tomorrow_comes_today"]:
-        print "test1 passed"
+        print "test2 passed"
     else:
-        print "test1 failed"
+        print "test2 failed"
 
 
 if __name__ == "__main__":
-    test1()
-    test2()
+#   test1()
+#   test2()
     run()
