@@ -11,6 +11,7 @@ def preorderTraversal(root):
             stack.append(node.right)
             stack.append(node.left)
 
+
 class Node:
     def __init__(self, val):
         self.val = val

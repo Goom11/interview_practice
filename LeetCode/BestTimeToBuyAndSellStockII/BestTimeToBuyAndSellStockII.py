@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 def maxProfit(prices):
     total = 0
     for i, price in enumerate(prices):

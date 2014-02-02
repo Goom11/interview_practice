@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 def isPalindrome(x):
     div = 1
     while (x / div >= 10):

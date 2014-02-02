@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 def get_neighbors(node, farmland):
     # This could be replaced with a list comprehension, no time atm
     nodes = [node]
@@ -23,6 +24,7 @@ def get_neighbors(node, farmland):
         nodes.append((i + 1, j + 1))
     return nodes
 
+
 def get_min_node(node_to_elevation):
     # neg inf or -1 both work i think cause no negative elevations
     min_node = (-1, -1, float("inf"))
@@ -34,20 +36,22 @@ def get_min_node(node_to_elevation):
     i, j, e = min_node
     return (i, j)
 
+
 def find_lowest_neighbor(node, farmland):
     # easy peasy lemon squeesy
     i, j = node
     n = len(farmland)
     nodes = get_neighbors(node, farmland)
     # yay dict comprehensions
-    node_to_elevation = {(i, j): farmland[i][j] for i,j in nodes}
+    node_to_elevation = {(i, j): farmland[i][j] for i, j in nodes}
     return get_min_node(node_to_elevation)
+
 
 def traverse(cur_node, basins, farmland):
     next_node = find_lowest_neighbor(cur_node, farmland)
     traversed_nodes = []
     traversed_nodes.append(cur_node)
-    # Traverse each node until you are at a sink or at a node that we've already traversed
+    # Traverse node until you are at a sink or already traversed node
     while next_node != cur_node and next_node not in basins:
         cur_node = next_node
         traversed_nodes.append(cur_node)
@@ -60,6 +64,7 @@ def traverse(cur_node, basins, farmland):
         basins[node] = basins[next_node]
     return basins
 
+
 def get_basins(farmland):
     basins = {}
     n = len(farmland)
@@ -67,9 +72,10 @@ def get_basins(farmland):
         for j in xrange(n):
             node = (i, j)
             if node not in basins:
-                #only need to traverse the node if it hasn't already been traversed
+                #only need to traverse untraversed nodes
                 basins = traverse(node, basins, farmland)
     return basins
+
 
 def reverse_dict(input_dict):
     output_dict = {}
@@ -77,10 +83,12 @@ def reverse_dict(input_dict):
         output_dict.setdefault(value, []).append(key)
     return output_dict
 
+
 def basins_to_size(basins):
-    # this is for efficiency cause if you reverse it then its faster for sorting
+    # get actual sizes of basins
     sinks_to_nodes = reverse_dict(basins)
     return [len(nodes) for sink, nodes in sinks_to_nodes.iteritems()]
+
 
 def run():
     # get input
