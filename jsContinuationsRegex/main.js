@@ -55,7 +55,7 @@ function accept(regex, chars, k) {
 				 return first;
 			 }
 			 return accept(r, chars, function(remaining) {
-					 return accept(r, remaining, k);
+					 return accept(regex, remaining, k);
 				 });
 	}
 }
@@ -72,5 +72,4 @@ var regex2 = Choice(Star(Literal("ab")), Concat(Literal("a"), Star(Literal("ba")
 console.log(accept(Literal("abc"), "abc", complete));
 console.log(accept(regex1, "abababc", complete));
 console.log(accept(regex1, "abababd", complete));
-//Something wrong with Star, fix later maybe
-//console.log(accept(regex2, "abababa", complete));
+console.log(accept(regex2, "abababa", complete));
