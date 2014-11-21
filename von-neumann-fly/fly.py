@@ -6,7 +6,7 @@ def fly(dataset):
     elapsed_dist_a = elapsed_time * a
     elapsed_dist_b = elapsed_time * b
     elapsed_dist_f = elapsed_time * f
-    if elapsed_dist_f < 0.01:
+    if elapsed_dist_f < 0.005:
         return elapsed_dist_f
     remaining_dist = d - (elapsed_dist_a + elapsed_dist_b)
     elapsed_dist_f = elapsed_dist_f + fly((remaining_dist, b, a, f))
